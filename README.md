@@ -6,7 +6,7 @@ Setting up software and downloading files
 
 1) Create a floder on your laptop e.g. "Applied Statistics"
 2) Create a folder in the "Applied Statistics" folder called "RAW_DATA"
-3) [DOWNLOAD THE DATA TO SAID FOLDER ("RAW DATA")](https://clinepidb.org/ce/app/workspace/analyses/DS_8786631aaf/3T67dhK/details)
+3) [Download the four datasets from the PROMOTE Birth Cohort 3 Randomized Controlled Trial to the "RAW_DATA" folder](https://clinepidb.org/ce/app/workspace/analyses/DS_8786631aaf/3T67dhK/variables/EUPATH_0000096/OMRSE_00002045)
 4) [DOWNLOAD R IF YOU DO NOT HAVE IT ON YOUR COMPUTER](https://cran.rstudio.com/)
 5) [DOWLOAD R Studio IF YOU DO NOT HAVE IT ON YOUR COMPUTER](https://posit.co/download/rstudio-desktop/)
 
