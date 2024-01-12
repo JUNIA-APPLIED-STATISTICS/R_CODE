@@ -1,7 +1,7 @@
 # Welcome to the Github Platform of this course
 Here, I will post the script code before the lessons together with supplementary material 
 
-#1. Descriptive Statistics
+##1. Descriptive Statistics
 Setting up software and downloading files
 
 1) Create a floder on your laptop e.g. "Applied Statistics"
