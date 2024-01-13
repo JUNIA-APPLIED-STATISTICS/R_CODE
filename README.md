@@ -9,6 +9,7 @@ Setting up software and downloading files
 3) [Download the four datasets from the PROMOTE Birth Cohort 3 Randomized Controlled Trial to the "RAW_DATA" folder](https://clinepidb.org/ce/app/workspace/analyses/DS_8786631aaf/3T67dhK/variables/EUPATH_0000096/OMRSE_00002045)
 4) [Download R if you don't have it on your computer](https://cran.rstudio.com/)
 5) [Download RStudio if you don't have it on your computer](https://posit.co/download/rstudio-desktop/)
+6) If you do not have an unzipping tool [Download 7-zip](https://www.7-zip.fr/)
 
 You can check which version of Windows you have by pressing windows icon button+R simulateously, and writing in the search bar: winver
 You can check which version of mac os you have from the Apple menu in the upper-left corner of your screen, choose About This Mac
