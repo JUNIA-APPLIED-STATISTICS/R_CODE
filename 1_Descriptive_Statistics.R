@@ -50,12 +50,19 @@ summary()
 
 2.2
 #We can also examine a single variable, for example the heights of the participants
+#Lets examine the heights of each participant and the frequency distribution
+#of the heights.
+#What shape is the distribution?
+#What is the reason for this?
 #Example:
 summary(Participants$Height..cm...EUPATH_0010075.)
+hist(Participants$Height..cm...EUPATH_0010075.)
 
 
-#Examine the age of the participants enrolled using the summary() function
 
+#Examine the age of the participants enrolled using the summary() and hist() function
+#What shape is the distribution?
+#What is the reason for this?
 
 
 2.3
