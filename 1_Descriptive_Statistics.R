@@ -35,7 +35,7 @@ library(plyr)
 
 
 #Example
-Participants <- read.delim('C:/Users/sonja/Documents/JUNIA_applied_biostatistics/DATA/PROMOTE_BC3_cohort_Participants.txt',header = T)
+Participants <- read.delim('C:/Users/sonja/Documents/JUNIA_applied_biostatistics/RAW_DATA/PROMOTE_BC3_cohort_Participants.txt',header = T)
 
 
 2.1
@@ -46,7 +46,8 @@ colnames()
 nrow()
 ncol()
 summary()
-
+#How many variables were measured from these participants?
+#How many participants were enrolled in the study?
 
 2.2
 #We can also examine a single variable, for example the heights of the participants
@@ -77,6 +78,7 @@ unique(Participants$Medications.during.labor.and.delivery..EUPATH_0042212.)
 
 
 
+
 2.4
 #We can also see proportions of this data with the count() function from the package "plyr"
 #We will examine it by saving the results into the data frame "Medications_used"
@@ -88,6 +90,8 @@ View(Medications_used)
 #Let's do the same for the reasons for withdrawal. Use the count() function
 #and save it as a data frame with a name of your choosing using the "<-" function
 #View your data frame with the View() function
+#In the primary publication it stated tha 687 participants went through with the study.
+#Is this reflected in the documentation for withrawal? Who was eliminated from the study?
 
 
 
@@ -124,8 +128,7 @@ str()
 #Do this in two steps: 1) change Yes -> 1 and 2) No-> 0 in the whole data frame
 #Remember to convert your result into a data frame with the function
 #data.frame(), and save it as "Numerical_Data"
-
-
+Numerical_Data <-
 
 
 #Lets check our dataframe "Numerical_Data" with the str() function
@@ -140,7 +143,7 @@ str(Numerical_Data)
 #The data.frame() function
 #Remember! Only change the first 6 columns into numeric, and examine it through
 #the str() function
-
+Numerical_Data <-
 
 
 
@@ -150,7 +153,7 @@ str(Numerical_Data)
 #Now, we will split the data frame in half with the split() function
 #based on which drug (DP or SP) each of the participants got assigned to
 #Split the data based on the study arm and name it as "split_list"
-
+split_lsit
 
 
 
@@ -198,14 +201,14 @@ SP_DF<-
 
 3.09
 #Let's make two dataframes into one "Means" dataframe by using the rbind() function
-
+Means <-
 
 
 3.10
 #Lets make our data horizontal instead of longitudinal
 #We will use the transpose t() function and save it as a data.frame()
 #as Means_DF
-
+Means_DF <-
 
 
 3.11
@@ -215,7 +218,7 @@ SP_DF<-
 #Let's change those observations using the percent() function. 
 #Apply this function using the function lapply() on the 2,5 and 6 row of our
 #Means_DF dataframe
-
+Means_DF
 
 
 
