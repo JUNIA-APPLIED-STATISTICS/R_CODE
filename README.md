@@ -10,6 +10,7 @@ Setting up software and downloading files
 4) [Download R if you don't have it on your computer](https://cran.rstudio.com/)
 5) [Download RStudio if you don't have it on your computer](https://posit.co/download/rstudio-desktop/)
 6) If you do not have an unzipping tool [Download 7-zip](https://www.7-zip.fr/)
+7) [Link to the publication](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32224-4/fulltext)
 
 You can check which version of Windows you have by pressing windows icon button+R simulateously, and writing in the search bar: winver
 You can check which version of mac os you have from the Apple menu in the upper-left corner of your screen, choose About This Mac
