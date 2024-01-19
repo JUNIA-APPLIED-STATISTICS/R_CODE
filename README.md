@@ -29,3 +29,4 @@ Happy coding!
 
 [Theoretical Guide to MCA](https://personal.utdallas.edu/~herve/Abdi-MCA2007-pretty.pdf)
 
+[Example Publication with malaria & mca](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4386317/)
