@@ -26,9 +26,9 @@
 #Installons et introduisons dans cet environnement deux packages pour notre analyse:
 #fonctions dont vous avez besoin: install.packages() et library()
 #packages à installer : "FactorMineR" et "factoextra"
-
-
-
+install.packages(c("FactoMineR", "factoextra"))
+library("FactoMineR")
+library("factoextra")
 
 
 
@@ -38,8 +38,8 @@
 #PROMOTE_BC3_cohort_Households.txt
 #utilisez la fonction read.delim() pour importer ces fichiers dans R pour analyse
 #Nommez ces fichiers respectivement «Participants» et «Households»
-Participants <- 
-Households <- 
+Participants <- read.delim(,header = T)
+Households <- read.delim(,header = T)
 
 
 
@@ -53,9 +53,9 @@ Households <-
 #afin de combiner les deux trames de données à l'étape suivante
 
 #Utilisez la fonction colnames() pour retrouver les colonnes de ces variables si nécessaire
+variables_of_intrest_P <- Participants[,c(2,134)]
+variables_of_intrest_H <- Households[,c(1,40)]
 
-variables_of_intrest_P <- 
-variables_of_intrest_H <- 
 
 
 
@@ -64,7 +64,8 @@ variables_of_intrest_H <-
 #Ensembles de données "Households" en "variables_of_intrest_P" et "variables_of_intrest_H",
 #respectivement. Nous utiliserons la fonction merge() pour combiner ces ensembles de données
 #par "Household_Id". N'oubliez pas de définir all.x = TRUE pour inclure tous les cas.
-variables_of_intrest <- 
+variables_of_intrest_P <- merge(variables_of_intrest_P, variables_of_intrest_H, by = "Household_Id", 
+                                all.x = TRUE) 
 
 
 
@@ -73,8 +74,7 @@ variables_of_intrest <-
 #Super! Nous avons nos ensembles de données fusionnés et nous n'avons pas besoin de la variable commune
 #"Household_Id" plus pour analyse. Nous pouvons supprimer cette colonne de l'ensemble de données fusionné et la nommer
 #as mca_variables
-mca_variables <- 
-
+mca_variables <- variables_of_intrest_P[,-1]
 
 
 
@@ -87,36 +87,21 @@ View(mca_variables)
 #qu'il s'agit de valeurs NA (non disponible).
 #Prenez toutes les valeurs vides dans mca_variables et remplacez-les par NA
 #Indice: Les variables vides sont exprimées sous la forme: ""
-
-
+mca_variables[mca_variables == ""] <- NA
 
 
 
 2.5
 #Super! Nous allons maintenant utiliser la fonction na.omit() pour supprimer toutes les lignes qui sont
 #pas complet avec les données.
-
-
-
-
-
-2.6
-#Notre dataframe est presque prête pour l'analyse.
-#Nous, les variables actuelles sont des variables "chr" (caractère)
-#MCA ne peut être effectué que sur des variables "facteur"
-#factor sont celles qui stockent les données en niveaux, par ex. ordinal ou nominal
-#Changez cela avec la fonction sapply(), et appliquez la fonction factor()
-#sur le bloc de données "mca_variables"
-
-
+mca_variables <- na.omit(mca_variables)
 
 
 
 2.7
 #Nous allons maintenant renommer les noms des colonnes pour la présentation
 #utilisez la fonction colnames() pour renommer vos colonnes comme vous le souhaitez pour la présentation
-
-
+colnames(mca_variables)=c("Placental Malaria","Household Bednets")
 
 
 
@@ -129,8 +114,8 @@ View(mca_variables)
 #Définissez votre "graph = FALSE", nous exécuterons la représentation séparément
 #mca sera une liste avec les résultats numériques de votre analyse
 #Cette liste stocke toutes les informations de mca, et nous les utiliserons pour analyser les résultats
-mca <- 
-
+mca <- MCA(mca_variables,
+           graph = FALSE)
   
 
 
@@ -164,6 +149,16 @@ summary(mca)
 #p.value = si cette coordonnée diffère significativement de 0 (par exemple, aucun impact
 #sur la dimension)
 dimdesc(mca)
+
+var <- get_mca_var(mca)
+
+# Here, you can see the coordinates of each factor
+head(var$coord)
+# Cos2: quality on the factor map
+head(var$cos2)
+# Contributions to the variability in each dimension
+head(var$contrib)
+
 
 #Une photo vaut plus de 1 000 de mots !
 #Nous pouvons tracer beaucoup de ces informations, et nous y ferons référence
