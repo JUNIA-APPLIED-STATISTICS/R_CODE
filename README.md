@@ -21,7 +21,7 @@ Happy coding!
 
 ##2. Multiple Correspondance Analysis
 
-[Principal Component Methods in R: Practical Guide](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/114-mca-multiple-correspondence-analysis-in-r-essentials/)
+[MCA Methods in R: Practical Guide](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/114-mca-multiple-correspondence-analysis-in-r-essentials/)
 
 [Visualize MCA Results in R](https://rpkgs.datanovia.com/factoextra/reference/fviz_mca.html)
 
@@ -30,3 +30,12 @@ Happy coding!
 [Theoretical Guide to MCA](https://personal.utdallas.edu/~herve/Abdi-MCA2007-pretty.pdf)
 
 [Example Publication with malaria & mca](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4386317/)
+
+
+##3. Principal Component Analysis 
+
+[Principal component methods in R: A practical guide](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/)
+
+[R Colours for Graphs Cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)
+
+[Simple explanation of PCA and data dimensionality](https://www.youtube.com/watch?v=FgakZw6K1QQ)
