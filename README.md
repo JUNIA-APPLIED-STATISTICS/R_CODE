@@ -19,7 +19,7 @@ You can then download the code from this reposatory, save it in the "Applied Sta
 Happy coding!
 
 
-##2. Multiple Correspondance Analysis
+##2. Multiple Correspondance Analysis##
 
 [MCA Methods in R: Practical Guide](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/114-mca-multiple-correspondence-analysis-in-r-essentials/)
 
@@ -32,10 +32,17 @@ Happy coding!
 [Example Publication with malaria & mca](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4386317/)
 
 
-##3. Principal Component Analysis 
+##3. Principal Component Analysis##
 
 [Principal component methods in R: A practical guide](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/)
 
 [R Colours for Graphs Cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)
 
 [Simple explanation of PCA and data dimensionality](https://www.youtube.com/watch?v=FgakZw6K1QQ)
+
+
+##4. Surviavl Analysis##
+
+[Survival analysis in R: A practical guide](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
+
+[Simple explanation of survival analysis](https://www.youtube.com/watch?v=Wo9RNcHM_bs&ab_channel=DATAtab)
