@@ -41,7 +41,7 @@ Happy coding!
 [Simple explanation of PCA and data dimensionality](https://www.youtube.com/watch?v=FgakZw6K1QQ)
 
 
-##4. Surviavl Analysis##
+##4. Survival Analysis##
 
 [Survival analysis in R: A practical guide](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
 
