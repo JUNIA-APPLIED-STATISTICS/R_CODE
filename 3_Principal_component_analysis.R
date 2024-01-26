@@ -21,7 +21,8 @@
 1.1
 #Nous avons déjà installé FactorMineR et factoextra à partir de l'analyse de correspondance précédente
 #Amenez ces packages dans cet environnement de travail
-
+library("FactoMineR")
+library("factoextra")
 
 
 
@@ -31,7 +32,8 @@
 #Vous aurez besoin du fichier :
 #PROMOTE_BC3_cohort_Participant_repeated_measures.txt
 Rep_measures <- 
-  
+Participants <-
+Households <-
   
   
 
@@ -62,8 +64,8 @@ pca_variables <-
 2.4
 #Pour que toute analyse soit impartiale, nous incluons uniquement des cas complets.
 #Éliminer les valeurs NA et vides
-pca_variables <- 
-  
+pca_variables[pca_variables == ""] <- NA
+pca_variables <- na.omit(pca_variables)
   
   
   
@@ -75,8 +77,8 @@ pca_variables <-
 #Nommez ce vecteur "qualitative_variable"
 #Modifiez les valeurs vectorielles du niveau de caractère au niveau de facteur avec as.factor()
 #Enfin, supprimez cette variable du bloc de données "pca_variables"
-qualitative_variable <-
-pca_variables <- 
+qualitative_variable <- as.factor(pca_variables$Placental.malaria..EUPATH_0042117.)
+pca_variables <- pca_variables[,-4]
   
   
   
@@ -84,7 +86,8 @@ pca_variables <-
 #L'analyse #PCA ne prend que des données matricielles pour l'analyse
 #Utilisez la fonction data.matrix() pour changer la structure de pca_variables
 #dans une matrice.
-pca_variables_matrix <- 
+pca_variables_matrix <- data.matrix(pca_variables)
+
 
 
 
@@ -98,12 +101,13 @@ pca_variables_matrix <-
 #Set scale=FALSE afin d'extraire uniquement la moyenne centrale et de ne pas utiliser l'écart type
 #Comme méthode de normalisation (je sais, déroutant)
 #nommez votre résultat pca_variables_scaled
-pca_variables_scaled <- 
+pca_variables_scaled <- scale(pca_variables_matrix, scale = FALSE)
   
   
 2.4
 #Renommer les colonnes de pca_variables_scaled comme vous le souhaitez pour votre présentation
-
+names <- c("Child Age in Weeks","Child Heart Rate","Child head circumference","Child respiratory rate","Child temperature","Child Weight")
+colnames(pca_variables_scaled) <- names
 
 
 
@@ -118,7 +122,7 @@ pca_variables_scaled <-
 #plus proches les unes des autres et les variables qui sont corrélées négativement sont géométriquement sur un
 #quadrant opposé à son homologue. La distance des variables à l'origine géométrique
 #signifie dans quelle mesure cette variable a un impact sur la variance globale trouvée dans l'ensemble de données.
-pca_result <- 
+pca_result <- PCA(pca_variables_scaled)
   
   
   
@@ -135,8 +139,14 @@ pca_result <-
 
 #Sur combien de PC devrions-nous nous appuyer dans cette analyse basée sur les valeurs propres?
 #Utilisez fviz_eig() pour visualiser ces valeurs dans un éboulis
-get_eigenvalue(pca_result)
-fviz_eig(pca_result)
+eigen <- get_eigenvalue(pca_result)
+fviz_eig(pca_result, 
+         addlabels = TRUE, 
+         choice="eigenvalue",
+         main="Eigenvalues for PCA") +
+  geom_hline(yintercept=1, 
+             linetype="dashed", 
+             color = "red")
 
 
 
