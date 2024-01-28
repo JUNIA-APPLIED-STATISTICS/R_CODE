@@ -46,3 +46,12 @@ Happy coding!
 [Survival analysis in R: A practical guide](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
 
 [Simple explanation of survival analysis](https://www.youtube.com/watch?v=Wo9RNcHM_bs&ab_channel=DATAtab)
+
+
+##5. Inferential Statistics##
+
+[Inferential Statistics in R: A practical guide](https://rstudio-pubs-static.s3.amazonaws.com/911220_a74c16c8abcf457dacbf2a512718e2b4.html)
+
+[Correlation Matrices in R](http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software)
+
+[Log-rank test for Survival Analysis](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
