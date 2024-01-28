@@ -55,31 +55,32 @@ Participants <-
 #"Participant_Id"                          
 #"Observation.date..EUPATH_0004991."       
 #"Child.malaria.diagnosis..EUPATH_0042303."
-Variables_of_intrest_RM <-
+Variables_of_intrest_RM <- Repeated_measures[,c(2,132,41)]
 
 #Sous-ensemble de l'ensemble de données Participants à inclure
 #"Participant_Id"
 #"Delivery.date..EUPATH_0042043."  
-Variables_of_intrest_P <-
+Variables_of_intrest_P <- Participants[,c(1,86]
   
   
   
   
 1.3 
 #Fusionnez ces Variables_of_intrest_P et Variables_of_intrest_RM et supprimez les valeurs vides
-Variables_of_intrest <-
-  
-  
+Variables_of_intrest <- merge(Variables_of_intrest_RM,Variables_of_intrest_P,by="Participant_Id")
+Variables_of_intrest[Variables_of_intrest == ""] <- NA
+Variables_of_intrest <- na.omit(Variables_of_intrest)
+
+
   
   
 1.4
 #Utilisez la fonction as.Date() pour créer une autre colonne avec la différence en jours entre
 #Date de livraison et Date d'observation
 #Indice: Moins la date de livraison à partir de la date d'observation
-Variables_of_intrest$date_diff <- 
-  
-  
-  
+Variables_of_intrest$Malaria_status <-ifelse(Variables_of_intrest$Child.malaria.diagnosis..EUPATH_0042303.== "No malaria", 0, 1)
+
+
   
 1.5
 #Dans l'analyse de survie, nous utilisons des variables muettes (dummy variables)
@@ -88,8 +89,8 @@ Variables_of_intrest$date_diff <-
 #Utilisez la fonction ifelse() pour convertir le diagnostic de paludisme chez 
 #l'enfant en variables fictives nominales "No malaria" = 0 et sinon = 1
 #Enregistrez ceci dans une colonne séparée "Malaria_status"
-Variables_of_intrest$Malaria_status <-
-
+Variables_of_intrest$date_diff <- as.Date(as.character(Variables_of_intrest$Observation.date..EUPATH_0004991.), format="%Y-%m-%d")-
+  as.Date(as.character(Variables_of_intrest$Delivery.date..EUPATH_0042043.), format="%Y-%m-%d")
   
   
 
@@ -99,20 +100,23 @@ Variables_of_intrest$Malaria_status <-
 #Créer une base de données distincte pour les observations avec uniquement un paludisme positif
 #diagnostic en utilisant la fonction grep()
 #convertir en table de données avec as.data.table()  
-malaria_pos <-
+malaria_pos <- Variables_of_intrest[grep(1, Variables_of_intrest$Malaria_status),]
 malaria_pos_DF =as.data.table(malaria_pos)
+
+
 
 #Nous allons trouver la première date à laquelle l'enfant a reçu un diagnostic de paludisme
 #Sous-définissez le malaria_pos_DF par la colonne dat_diff avec les règles suivantes:
 #Tout d'abord, assurez-vous que le sous-ensemble sait que vous utilisez des symboles spéciaux (chr "jours") avec .SD
 #Trouver la première date après l'accouchement où le paludisme a été diagnostiqué avec which.min() of date_diff
 #Trier le sous-ensemble par=Participant_Id
-malaria_neg_DF <-
+malaria_pos_DF <- malaria_pos_DF[,.SD[which.min(date_diff)],by=Participant_Id]
+
   
 
 #Créez un vecteur des identifiants des participants avec un diagnostic positif de paludisme
-participants_with_malaria <-
-  
+participants_with_malaria <- malaria_pos_DF$Participant_Id
+
   
   
   
@@ -122,7 +126,7 @@ participants_with_malaria <-
 #Créer une base de données distincte pour les observations avec uniquement un paludisme négatif
 #diagnostic en utilisant la fonction grep()
 #convertir en table de données avec as.data.table()
-malaria_neg <- 
+malaria_neg <- Variables_of_intrest[grep(0, Variables_of_intrest$Malaria_status),]
 malaria_neg_DF=as.data.table(malaria_neg)
 
 
@@ -132,22 +136,21 @@ malaria_neg_DF=as.data.table(malaria_neg)
 #Tout d'abord, assurez-vous que le sous-ensemble sait que vous utilisez des symboles spéciaux (chr "jours") avec .SD
 #Trouvez la première date après l'accouchement où le paludisme a été diagnostiqué avec which.max() de date_diff
 #Trier le sous-ensemble par=Participant_Id
-malaria_neg_DF <- 
+malaria_neg_DF <- malaria_neg_DF[,.SD[which.max(date_diff)],by=Participant_Id]
+
 
   
 #Enfin, nous supprimons les cas positifs pour le paludisme par identifiant de participant
 #en utilisant le vecteur participants_with_malaria
 #Vous pouvez le faire plus facilement en transmettant le résultat avec la fonction dplyr %in%
 #sur le vecteur participants_with_malaria
-malaria_neg_DF <- 
+malaria_neg_DF <- malaria_neg_DF[ ! malaria_neg_DF$Participant_Id %in% participants_with_malaria, ]
 
-  
-  
+
   
 3.1
 #Liez malaria_neg et malaria_pos par lignes en utilisant rbind()
-Whole_DF_Malaria_Status <- 
-
+Whole_DF_Malaria_Status <- rbind(malaria_neg_DF,malaria_pos_DF)
 
 
 3.2
@@ -156,8 +159,7 @@ Whole_DF_Malaria_Status <-
 
 #Lorsque vous avez choisi votre propre variable catégorielle après le point 5.1, incluez cette variable
 #aussi
-Malaria <- 
-
+Malaria <- Whole_DF_Malaria_Status[,c(6,7)]
 
 
 
@@ -176,7 +178,7 @@ Malaria <-
 #Point de données "non censuré"
 
 #Utilisez la documentation dans le fichier Github README pour un exemple de syntaxe
-Survival_object <- Surv()
+Survival_object <- Surv(Malaria$date_diff, Malaria$Malaria_status)
 
 
 
@@ -186,7 +188,8 @@ Survival_object <- Surv()
 #ont reçu un diagnostic de paludisme (événements), les jours médians jusqu'à l'événement pour
 #happen, et l'intervalle de confiance supérieur et inférieur pour cette observation
 #Utilisez la documentation dans le fichier Github README pour un exemple de syntaxe
-survfit(Surv())
+survfit(Surv(date_diff, Malaria_status) ~ 1, data = Malaria)
+
 
 
 
@@ -196,9 +199,15 @@ survfit(Surv())
 #Imbriquer la fonction Surv() complète de la version 4.1 dans la fonction survfit2()
 #Ajoutez un intervalle de confiance et un tableau de risque en utilisant ggsurvfit()
 #Utilisez la documentation dans le fichier Github README pour un exemple de syntaxe
-survfit2(Surv()) %>%
-  ggsurvfit()
-
+survfit2(Surv(date_diff, Malaria_status) ~ 1, data = Malaria) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Days",
+    y = "Overall survival probability"
+  )+ 
+  add_confidence_interval()+
+  add_risktable()
+                                          
 
 
 #Dans ce graphique, vous pouvez voir la probabilité de survie (par exemple, ne pas développer le paludisme)
