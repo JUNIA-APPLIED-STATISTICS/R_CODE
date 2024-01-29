@@ -12,9 +12,9 @@
 
 #Vous effectuerez également votre propre prétraitement, qui comprend
 #1) sous-ensemble de votre ensemble de données,
-# 2) supprimer les variables manquantes
+#2) supprimer les variables manquantes
 #3) choisissez votre approche
-# 4) Assurez-vous que les hypothèses de données de votre approche statistique sont valables dans vos données
+#4) Assurez-vous que les hypothèses de données de votre approche statistique sont valables dans vos données
 #(pour les variables PCA)
 #Par exemple, la régression linéaire suppose que vos données sont linéaires et
 #t-test suppose des données normalement distribuées
