@@ -55,3 +55,9 @@ Happy coding!
 [Correlation Matrices in R](http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software)
 
 [Log-rank test for Survival Analysis](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
+
+##Data VIsualization##
+
+[GGplot Cheat Sheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
+
+[R Colours for Graphs Cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)
