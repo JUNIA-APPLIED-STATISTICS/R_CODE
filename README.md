@@ -61,3 +61,25 @@ Happy coding!
 [GGplot Cheat Sheet](https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf)
 
 [R Colours for Graphs Cheatsheet](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)
+
+##At home study resources##
+
+[Desciptive statistics](https://www.youtube.com/watch?v=FzujIYo9GYo&ab_channel=DATAtab)
+
+[MCA](https://www.youtube.com/watch?v=0z30RDikYaw&t=397s&ab_channel=Fran%C3%A7oisHusson)
+
+[PCA](https://www.youtube.com/watch?v=5vgP05YpKdE&t=588s&ab_channel=Biostatsquid)
+
+[Survival Analysis](https://www.youtube.com/watch?v=Wo9RNcHM_bs&t=2s&ab_channel=DATAtab)
+
+[Kaplan-Meijer CUrve](https://www.youtube.com/watch?v=L_ziqYhksG8&t=406s&ab_channel=DATAtab)
+
+[log-rank test](https://www.youtube.com/watch?v=FhUkDRzHdHE&t=3s&ab_channel=DATAtab)
+
+[Inferential Statistics](https://www.youtube.com/watch?v=idZHQwVohOo&ab_channel=DATAtab)
+
+[Pearson correlartion](https://www.youtube.com/watch?v=k7IctLRiZmo&ab_channel=DATAtab)
+
+[Spearman Correlation](https://www.youtube.com/watch?v=XV_W1w4Nwoc&t=176s&ab_channel=DATAtab)
+
+[p_value](https://www.youtube.com/watch?v=Xni5YVlgiiQ&ab_channel=DATAtab)
